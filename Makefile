@@ -1,6 +1,5 @@
 LIBFT_A_NAME = libft.a
-LIBFT_H_NAME = libft.h
-LIB_SRCS = ft_isalpha.c \
+LIBFT_SRCS = ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
 	ft_isascii.c \
@@ -43,34 +42,38 @@ LIB_SRCS = ft_isalpha.c \
 	ft_lstclear.c \
 	ft_lstiter.c \
 	ft_lstmap.c
-LIB_OBJS = $(LIB_SRCS:.c=.o)
-LIB_EXE = a.exe
+LIB_OBJS = $(LIBFT_SRCS:.c=.o)
 CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror
-CMD_AR = ar rcs
-CMD_RM = rm -f
-
+# # Programa ar (archiver).
+# r = replace (reemplaza objetos existentes)
+# c = create (crea la librería si no existe)
+# s = crea el índice de símbolos para que el linker la use
+CMD_AR_RCS_FLAG = ar rcs
+# # Comando rm
+# -f = force
+CMD_RM_F_FLAG = rm -f
+# #
 %.o: %.c
 	@echo "Compiling  ..." 
 	@$(CC) $(CC_FLAGS) -c $< -o $@
-
-all: $(LIBFT_A_NAME)
+# Esto es una dependencia. Indica que para construir libft.a(LIB_A_NAME), primero necesito que existan los objetos .o(LIB_OBJ).
+# Cuando existen los objetos, ejecutamos el programa ar (archiver) para crear una libreria estatica. Es equivalente a decir "mete estos .o dentro del archivo libft.a".
 $(LIBFT_A_NAME): $(LIB_OBJS)
-	@echo "Doing all ..."
+	@echo "Doing ar comand ..."
 	@$(CMD_AR) $(LIBFT_A_NAME) $(LIB_OBJS)
-
+# # Make Rules
+# make all
+all: $(LIBFT_A_NAME)
+# make clean
 clean:
 	@echo "Doing clean ..."
 	@$(CMD_RM) $(LIB_OBJS)
-
+# make fclean
 fclean: clean
 	@echo "Doing fclean ..."
 	@$(CMD_RM) $(LIBFT_A_NAME)
-
+# make re
 re: fclean all
-
-tests: fclean
-	@echo "Exec Cleaning Tests ..."
-	@$(CMD_RM) $(LIB_EXE)
-
-.PHONY: all clean fclean re tests
+# .PHONY
+.PHONY: all clean fclean re
