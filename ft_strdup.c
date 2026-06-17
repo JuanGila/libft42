@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgilaber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jgilaber <jgilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 23:32:12 by jgilaber          #+#    #+#             */
-/*   Updated: 2026/02/18 23:32:17 by jgilaber         ###   ########.fr       */
+/*   Updated: 2026/06/17 17:33:08 by jgilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strdup(const char *s)
 {
 	char	*str_dup;
 	if (!s)
-		return (ft_strdup(""));//verificar si hay que comprobar -> !s
+		return (ft_strdup(""));
 	str_dup = (char *) malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!str_dup)
 		return (NULL);

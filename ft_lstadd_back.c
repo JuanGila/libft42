@@ -6,7 +6,7 @@
 /*   By: jgilaber <jgilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 20:39:05 by jgilaber          #+#    #+#             */
-/*   Updated: 2026/06/02 20:39:05 by jgilaber         ###   ########.fr       */
+/*   Updated: 2026/06/17 19:28:41 by jgilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	while ((*lst)->next)
 		*lst = (*lst)->next;
 	(*lst)->next = new;
+	//ft_lstlast(*lst)->next = new;
 }
 
 /*
