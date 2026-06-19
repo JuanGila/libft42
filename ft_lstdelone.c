@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
@@ -29,7 +28,7 @@ void ft_print_list(t_list *begin_list) {
         tmp = tmp->next;
     }
 }
-	
+
 int	main(void)
 {
 	char *str = malloc(sizeof(char) * 12);

@@ -26,15 +26,29 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	}
 }
 /* revisar porque lee memoria de donde no debe
-    y porque solo convierte en 1 algunos elementos y otros no. USAR EL MOCK QUE TIENE MAPENA EN FT_LSTMAP
+    y porque solo convierte en 1 algunos elementos y otros no.
+void *ft_lst_map_f(void *content)
+{
+    char *str;
+    char *new_str;
+    int i;
 
-void ft_iteri(unsigned int str_index, char *str) {
-    printf("str_index -> %u\n", str_index);
-    printf("ft_iteri_in -> %s\n", &str[str_index]);
-    //str[str_index] = '1';
-    printf("ft_iteri_out -> %s\n", &str[str_index]);
+    if (!content)
+        return (NULL);
+    str = (char *)content;
+    new_str = malloc(strlen(str) + 1);
+    if (!new_str)
+        return (NULL);
+    i = 0;
+    while (str[i])
+    {
+        new_str[i] = str[i] + 1;
+        i++;
+    }
+    new_str[i] = '\0';
+    return (new_str);
 }
-    
+
 int main(void) {
     char *string = malloc(sizeof(char) * 7);
     strcpy(string, "abcdef");

@@ -10,12 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <string.h>
 #include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
-{//revisar si guille contiene mi linea 25 -> if (nbr < 0) ya que copie su nbr, si no la tiene y n es 0 peta el codigo porque haces 0 = -0
+{
 	long	nbr;
 	char	c;
 

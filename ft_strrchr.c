@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stddef.h>
 #include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)

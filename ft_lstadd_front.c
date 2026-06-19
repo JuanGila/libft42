@@ -6,7 +6,7 @@
 /*   By: jgilaber <jgilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 20:40:39 by jgilaber          #+#    #+#             */
-/*   Updated: 2026/06/02 20:40:39 by jgilaber         ###   ########.fr       */
+/*   Updated: 2026/06/18 17:29:40 by jgilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (lst == NULL || new == NULL)
+	if (!lst || !new)//== NULL
 		return ;
 	new->next = *lst;
 	*lst = new;

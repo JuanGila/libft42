@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_lstmap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapena-z <mapena-z@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgilaber <jgilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 10:17:50 by mapena-z          #+#    #+#             */
-/*   Updated: 2026/05/25 10:18:23 by mapena-z         ###   ########.fr       */
+/*   Updated: 2026/06/18 17:50:08 by jgilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,7 @@ int run_subtest(int index)
     {
         ft_lstadd_back(&list, n1);
         new_list = ft_lstmap(list, mock_map_f, mock_map_del);
-        
         int ok = (new_list != NULL && strcmp(new_list->content, "2") == 0 && new_list->next == NULL);
-        
         ft_lstclear(&list, mock_map_del);
         ft_lstclear(&new_list, mock_map_del);
         free(n2->content); free(n2);

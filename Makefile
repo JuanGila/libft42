@@ -43,7 +43,7 @@ LIBFT_SRCS = ft_isalpha.c \
 	ft_lstiter.c \
 	ft_lstmap.c
 LIB_OBJS = $(LIBFT_SRCS:.c=.o)
-CC = gcc
+CC = cc
 CC_FLAGS = -Wall -Wextra -Werror
 # # Programa ar (archiver).
 # r = replace (reemplaza objetos existentes)
@@ -57,14 +57,14 @@ CMD_RM_F_FLAG = rm -f
 %.o: %.c
 	@echo "Compiling  ..." 
 	@$(CC) $(CC_FLAGS) -c $< -o $@
+# make all
+all: $(LIBFT_A_NAME)
 # Esto es una dependencia. Indica que para construir libft.a(LIB_A_NAME), primero necesito que existan los objetos .o(LIB_OBJ).
 # Cuando existen los objetos, ejecutamos el programa ar (archiver) para crear una libreria estatica. Es equivalente a decir "mete estos .o dentro del archivo libft.a".
 $(LIBFT_A_NAME): $(LIB_OBJS)
 	@echo "Doing ar comand ..."
-	@$(CMD_AR) $(LIBFT_A_NAME) $(LIB_OBJS)
+	@$(CMD_AR_RCS_FLAG) $(LIBFT_A_NAME) $(LIB_OBJS)
 # # Make Rules
-# make all
-all: $(LIBFT_A_NAME)
 # make clean
 clean:
 	@echo "Doing clean ..."

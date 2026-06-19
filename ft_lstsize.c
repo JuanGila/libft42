@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
 
 int	ft_lstsize(t_list *lst)
 {
 	int	size_count;
 
-	if (lst == NULL)
+	if (!lst)
 		return (0);
 	size_count = 0;
 	while (lst != NULL)

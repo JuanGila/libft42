@@ -12,24 +12,36 @@
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
-	{
-	size_t	isrc;
-	size_t	ldest;
-	size_t	lsrc;
+size_t	ft_strlcat_optimizado_probar(char *dest, const char *src, size_t size)
+{
+	size_t	dest_len;
 
-	ldest = ft_strlen(dest);
-	lsrc = ft_strlen(src);
-	isrc = 0;
-	if (size <= ldest)
-		return (lsrc + size);
-	while (src[isrc] != '\0' && isrc < size - ldest - 1)
+	dest_len = ft_strlen(dest);
+	if (size <= dest_len)
+		return (ft_strlen(src) + size);
+	ft_memcpy(dest + dest_len, src, size - dest_len - 1);
+	dest[dest_len + (size - dest_len)] = '\0';
+	return (dest_len + ft_strlen(src));
+}
+
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
+{
+	size_t	dest_len;
+	size_t	src_len;
+	size_t	src_index;
+
+	dest_len = ft_strlen(dest);
+	src_len = ft_strlen(src);
+	src_index = 0;
+	if (size <= dest_len)
+		return (src_len + size);
+	while (src[src_index] && src_index < size - dest_len - 1)
 	{
-		dest[ldest + isrc] = src[isrc];
-		isrc++;
+		dest[dest_len + src_index] = src[src_index];
+		src_index++;
 	}
-	dest[ldest + isrc] = '\0';
-	return (ldest + lsrc);
+	dest[dest_len + src_index] = '\0';
+	return (dest_len + src_len);
 }
 
 /*

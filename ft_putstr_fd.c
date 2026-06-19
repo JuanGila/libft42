@@ -15,10 +15,12 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (!s || fd < 0)
+	if (!s || fd < 0)//verificar esto ya que existen fd negativos.
         return ;
 	while (*s)
 		write(fd, s++, sizeof(char));
+    while (*s)
+        ft_putchar_fd(*s++, fd);//probar
 }
 /*
 int main(void) {

@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stddef.h>
 #include "libft.h"
 
 size_t	ft_get_init_word_index(
@@ -88,7 +84,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	split = malloc(sizeof(char *) * (ft_get_word_count(s, c)));
-	if (split == NULL)
+	if (!split)
 		return (NULL);
 	if (ft_get_word_count(s, c) == 0)
 	{
@@ -115,24 +111,4 @@ int main(void) {
 	}
 	free(split);
 	return (0);
-}
-
-MI SPLIT DEFINITIVO
-char **ft_split(char const *s, char c) {
-    size_t str_words_count = ft_get_word_count(s, c);
-    char **split = malloc(sizeof(char *) * (ft_get_word_count(s, c) + 1));
-	if (!split) return (NULL);
-    size_t init_word_index = 0, final_word_index = 0, split_index = 0;
-    while (split_index < ft_get_word_count(s, c)) {
-        while (s[init_word_index] && s[init_word_index] == c) init_word_index++;
-        final_word_index = init_word_index;
-        while (s[final_word_index] && s[final_word_index] != c) final_word_index++;
-        split[split_index] = ft_substr(s, init_word_index, final_word_index-init_word_index);
-        printf("split[split_index]_ft_substr -> %s\n", split[split_index]);
-        if (!split[split_index]) return (NULL);
-        init_word_index = final_word_index+1;
-        split_index++;
-    }
-    split[split_index] = NULL;
-    return (split);
 }*/

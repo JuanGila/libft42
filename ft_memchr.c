@@ -10,24 +10,39 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stddef.h>
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
-{
-	size_t			s_index;
+void	*ft_memchr_optimizado_probar(const void *s, int c, size_t n)
+{//verificar porque no se comprueba -> if (!s || !c || !n)
+	size_t			index;
 	unsigned char	ptr_c;
 	unsigned char	*ptr_s;
 
-	s_index = 0;
+	index = 0;
 	ptr_c = (unsigned char)c;
 	ptr_s = (unsigned char *)s;
-	while (s_index < n)
+	while (ptr_s[index] != ptr_c && index < n)
+		index++;
+	if (ptr_s[index] == ptr_c)
+		return (ptr_s + index);
+	else
+		return (NULL);
+}
+
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	size_t			index;
+	unsigned char	ptr_c;
+	unsigned char	*ptr_s;
+
+	index = 0;
+	ptr_c = (unsigned char)c;
+	ptr_s = (unsigned char *)s;
+	while (index < n)
 	{
-		if (ptr_s[s_index] == ptr_c)
-			return (ptr_s + s_index);
-		s_index++;
+		if (ptr_s[index] == ptr_c)
+			return (ptr_s + index);
+		index++;
 	}
 	return (NULL);
 }

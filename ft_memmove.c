@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stddef.h>
 #include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
@@ -23,7 +19,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	ptr_dest = (unsigned char *)dest;
 	ptr_src = (unsigned char *)src;
-	if (!dest || !src || n == 0)
+	if (!ptr_dest || !ptr_src || !n)
 		return (NULL);
 	if (ptr_src < ptr_dest)
 	{
@@ -34,25 +30,13 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		ft_memcpy(dest, src, n);
 	return (dest);
 }
-/*ptr_dest_index = n, ptr_src_index = 0;
-	while (ptr_dest_index > 0)
-	{
-		ptr_dest[ptr_dest_index - 1] = ptr_src[ptr_src_index];
-		ptr_dest_index--;
-		ptr_src_index++;
-	}
-*/
 /*
-🧠 ¿Cómo se logra evitar el solapamiento de memoria?
-Detectamos si las regiones se pisan:
-    Si dest < src → copia de izquierda a derecha
-    Si dest > src → copia de derecha a izquierda (evita sobrescritura)
-
 void ft_do_memmove(char *test, char *dst, char *src, size_t size) {
     printf("%s_in -> dest: %s src: %s\n", test, dst, src);
     unsigned char *ptr_memmove = ft_memmove(dst, src, size);
     printf("%s_out -> dest: %s src: %s\n", test, ptr_memmove, src);
 }
+
 int main(void) {
     char *s1 = malloc(sizeof(char) * 9);
     strcpy(s1, "1234");

@@ -10,24 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stddef.h>
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp_optimizado_probar(const void *s1, const void *s2, size_t n)
 {
-	size_t			s_index;
+	size_t			i;
 	unsigned char	*ptr_s1;
 	unsigned char	*ptr_s2;
 
-	s_index = 0;
+	i = 0;
 	ptr_s1 = (unsigned char *)s1;
 	ptr_s2 = (unsigned char *)s2;
-	while (s_index < n)
+	while ((ptr_s1[i] && ptr_s2[i]) && ptr_s1[i] == ptr_s2[i] && i < n)
+		i++;
+	return (ptr_s1[i] - ptr_s2[i]);
+}
+
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	size_t			i;
+	unsigned char	*ptr_s1;
+	unsigned char	*ptr_s2;
+
+	i = 0;
+	ptr_s1 = (unsigned char *)s1;
+	ptr_s2 = (unsigned char *)s2;
+	while (i < n)
 	{
-		if (ptr_s1[s_index] != ptr_s2[s_index])
-			return (ptr_s1[s_index] - ptr_s2[s_index]);
-		s_index++;
+		if (ptr_s1[i] != ptr_s2[i])
+			return (ptr_s1[i] - ptr_s2[i]);
+		i++;
 	}
 	return (0);
 }

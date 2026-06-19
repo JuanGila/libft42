@@ -6,7 +6,7 @@
 /*   By: jgilaber <jgilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 21:36:25 by jgilaber          #+#    #+#             */
-/*   Updated: 2026/06/17 19:58:47 by jgilaber         ###   ########.fr       */
+/*   Updated: 2026/06/18 17:46:41 by jgilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,18 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	unsigned int	s1_init_trim;
-	unsigned int	s1_final_trim;
+	unsigned int	s1_init;
+	unsigned int	s1_final;
 
 	if (!s1 || !set)
 		return (NULL);
-	s1_init_trim = 0;
-	s1_final_trim = ft_strlen(s1);
-	while (ft_strchr(set, s1[s1_init_trim]))
-		s1_init_trim++;
-	while (ft_strchr(set, s1[s1_final_trim - 1]) && s1_final_trim > s1_init_trim)
-		s1_final_trim--;
-	return (
-		ft_substr(
-			s1, s1_init_trim,
-			(s1_final_trim - s1_init_trim)
-		)
-	);
+	s1_init = 0;
+	s1_final = ft_strlen(s1);
+	while (ft_strchr(set, s1[s1_init]))
+		s1_init++;
+	while (s1_final > s1_init && ft_strchr(set, s1[s1_final - 1]))
+		s1_final--;
+	return (ft_substr(s1, s1_init, (s1_final - s1_init)));
 }
 
 /*
